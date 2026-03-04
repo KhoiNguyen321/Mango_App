@@ -22,19 +22,18 @@ namespace Mango.Services.CouponAPI.Controllers
         }
 
         [HttpGet]
-        public ResponseDto Get()
+        public object Get()
         {
             try
             {
-                IEnumerable<Coupon> objectList = _db.Coupons.ToList();
-                _response.Result = _mapper.Map<IEnumerable<Coupon>>(objectList);
+                IEnumerable<Coupon> objList = _db.Coupons.ToList();
+                return objList;
             }
-            catch (Exception ex)
+            catch
             {
-                _response.IsSuccess = false;
-                _response.Message = ex.Message;
+
             }
-            return _response;
+            return null;
         }
 
         [HttpGet]
